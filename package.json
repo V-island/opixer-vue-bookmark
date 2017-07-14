@@ -1,7 +1,7 @@
 {
   "name": "opixer-vue-bookmark",
   "version": "1.0.0",
-  "description": "基于vue开发opixer项目下bookmark",
+  "description": "基于vue开发opixer项目bookmark",
   "author": "island <vv15802702853@163.com>",
   "private": true,
   "scripts": {
