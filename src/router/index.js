@@ -11,7 +11,6 @@ import Icon from 'vue-awesome/components/Icon'
 
 //User-defined components
 import Index from '@/pages/index'
-import Admin from '@/pages/admin'
 
 //Global configuration
 Vue.use(Router)
@@ -23,11 +22,6 @@ export default new Router({
       path: '/',
       name: 'index',
       component: Index
-    },
-    {
-      path: '/admin',
-      name: 'admin',
-      component: Admin
     }
   ]
 })
