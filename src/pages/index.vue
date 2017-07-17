@@ -1,22 +1,7 @@
 <template>
 <div class="main">
-	<nav class="action-bar">
-		<!-- <div class="action-bar-item">
-			<div class="action-bar-dropdown-container">
-				<div class="action-bar-dropdown">
-					<div class="action-bar-dropdown-top">
-						<span>分类</span>
-						<span class="dropdown-icon"><icon name="angle-down"></icon></span>
-					</div>
-				</div>
-				<div class="action-bar-dropdown-children-container">
-					<div class="dropdown-submenu">
-						<div style="width:600px;height: 600px"></div>
-					</div>
-				</div>
-			</div>
-		</div> -->
-		<div class="action-bar-item" style="margin-left: 80px">
+	<!-- <nav class="action-bar">
+		<div class="action-bar-item">
 			<div class="action-bar-link active">
 				<a href="#" class="anchor">我的</a>
 			</div>
@@ -39,7 +24,7 @@
 				<a href="#" class="anchor">文章</a>
 			</div>
 		</div>
-	</nav>
+	</nav> -->
 	<!-- /.action-bar -->
 	<card-list class="content"></card-list>
 </div>
@@ -69,7 +54,7 @@ export default {
 @md-grey-500: #9e9e9e;
 @md-grey-600: #757575;
 .content{
-	padding: 10px 0;
+	// padding: 10px 0;
 }
 .action-bar{
 	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.05);
@@ -84,38 +69,6 @@ export default {
 		height: 48px;
 		vertical-align: top;
 	}
-	.action-bar-dropdown-container{
-		display: inline-block;
-		position: relative;
-		vertical-align: top;
-	}
-	.action-bar-dropdown-children-container{
-		margin: -44px 0 0 -40px;
-		padding: 40px;
-		position: absolute;
-		.dropdown-submenu{
-			-webkit-border-radius: 3px;
-			border-radius: 3px;
-			-webkit-box-shadow: 0 2px 40px rgba(0,0,0,0.4);
-			box-shadow: 0 2px 40px rgba(0,0,0,0.4);
-			background: #fff;
-			border: 1px solid @md-grey-400;
-			max-height: 500px;
-			overflow-x: hidden;
-			overflow-y: auto;
-			position: absolute;
-			top: 0;
-			white-space: nowrap;
-			z-index: 1100;
-			&:first-child{
-				opacity: 1;
-				filter: alpha(opacity=100);
-				left: 0;
-				position: relative;
-				top: 0;
-			}
-		}
-	}
 	.action-bar-spacer{
 		background: #d6d6d6;
 	    display: inline-block;
@@ -124,7 +77,7 @@ export default {
 	    padding: 0;
 	    width: 1px;
 	}
-	.action-bar-dropdown, .action-bar-link{
+	.action-bar-link{
 		-webkit-font-smoothing: antialiased;
 		color: @md-grey-600;
 		cursor: pointer;
@@ -163,14 +116,6 @@ export default {
 				font-weight: 500;
 			}
 		}
-	}
-	.action-bar-dropdown-top{
-	    padding: 0 14px;
-	}
-	.dropdown-icon{
-		display: inline-block;
-		margin: 0 3px;
-		vertical-align: middle;
 	}
 }
 </style>

@@ -29,7 +29,7 @@ export default {
 }
 .card{
 	display: inline-block;
-    margin: 5px;
+    // margin: 5px;
     width: 120px;
     height: 120px;
 	background: #fff;
