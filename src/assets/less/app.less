@@ -1,13 +1,17 @@
-@import 'mixin.less';
+// @import 'mixin.less';
 // @import 'base.less';
+@import 'flex-layout.less';
 //color
 @import 'material-colors.less';
 
 //theme
-@theme-color: @md-blue-grey-800;
+@theme-color: @md-blue-600;
 @theme-font-color: @md-white;
 
-.ws_normal{ white-space:normal !important;}
-.ws_break{word-wrap:break-word !important;word-break:normal !important;}
-.ws_prewrap{ white-space:pre-wrap !important;}
-.ws_hide{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+// font-size
+@book-toolbar-font-size: 20px;
+@book-logo-font-size: 24px;
+
+// @sidebar-width: 210px;
+@sidebar-width: 0;
+@sidebar-main-padding: 135px;
