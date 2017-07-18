@@ -23,7 +23,7 @@ export default {
     .layout-fixed-top;
     background: @theme-color;
     color: @theme-font-color;
-    z-index: 1;
+    z-index: 2;
     width: 100%;
   }
 </style>

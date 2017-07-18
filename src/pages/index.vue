@@ -33,7 +33,6 @@ export default {
 	content{
 		// text-align: center;
 		display: block;
-		white-space: nowrap;
 		line-height: 0;
 		position: relative;
 	}
