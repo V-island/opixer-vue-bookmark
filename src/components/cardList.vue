@@ -1,7 +1,7 @@
 <template>
 <div class="card-list">
   <div class="card">
-    <div class="card-item plus">
+    <div class="card-item plus" @click="$emit('show')">
       <div class="plus-icon"><icon name="plus-square-o" scale="3"></icon></div>
       <div class="plus-txt">添加新书签</div>
     </div>

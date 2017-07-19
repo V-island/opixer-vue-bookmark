@@ -1,22 +1,47 @@
 <template>
 <div class="main">
 	<content>
-		<card-list></card-list>
+		<card-list @show="show = true">
+		</card-list>
 	</content>
+	<book-modal :show="show" animation="slide-up" :width="448" :height="350" @hide="show = false" @show="show = true">
+		<div class="card-modal">
+			<div title>创建收藏集</div>
+			<input type="text" class="whsOnd zHQkBf" jsname="YPqjbf" autocomplete="off" tabindex="0" aria-label="收藏集名称" maxlength="50" autofocus="" data-initial-value="">
+		</div>
+	</book-modal>
 </div>
 </template>
-
 <script>
 import cardList from '@/components/cardList';
+import bookModal from '@/components/book-modal';
+import axios from 'axios';
 export default {
   name: 'index',
 	components: {
-		'card-list': cardList
+		'card-list': cardList,
+		'book-modal': bookModal
 	},
-  data () {
-    return {
-
-    };
+  data() {
+  	return {
+  		show: false
+  	}
+  },
+  methods: {
+    getAnswer(argument) {
+    	axios({
+    		url:'http://phalapi.app/Bookmark/',
+		    method:"POST",
+		    params: {
+	        service:'Admin.Insert'
+	      },
+		    data: window.getElementsByClassName('card-modal').serialize()
+			}).then(function (response) {
+					console.log(response.data.msg);
+    	  })
+    	  .catch(function (error) {
+    	  })
+    }
   }
 };
 </script>
@@ -29,6 +54,12 @@ export default {
     padding-top: @sidebar-main-padding;
     height: auto;
     backface-visibility: hidden;
+	}
+	.card-modal{
+		[title]{
+			font-size: 20px;
+	    font-weight: 500;
+		}
 	}
 	content{
 		// text-align: center;
@@ -61,5 +92,8 @@ export default {
       margin: 0 auto;
       padding: 0;
 		}
+	}
+	.card-modal{
+		
 	}
 </style>
