@@ -3,6 +3,7 @@
 	<content>
 		<card-list @show="show = true">
 		</card-list>
+		{{ getItems() }}
 	</content>
 	<book-modal :show="show" animation="slide-up" :width="448" :height="350" @hide="show = false" @show="show = true">
 		<div class="card-modal">
@@ -28,19 +29,19 @@ export default {
   	}
   },
   methods: {
-    getAnswer(argument) {
-    	axios({
-    		url:'http://phalapi.app/Bookmark/',
-		    method:"POST",
+    getItems() {
+		axios({
+			url:'http://bkapi.opixer.com',
+		    method:"GET",
 		    params: {
-	        service:'Admin.Insert'
-	      },
-		    data: window.getElementsByClassName('card-modal').serialize()
+				service:'Index.GetList',
+				type: 'sort'
+		    },
 			}).then(function (response) {
-					console.log(response.data.msg);
-    	  })
-    	  .catch(function (error) {
-    	  })
+				console.log(response.data.data);
+		  })
+		  .catch(function (error) {
+		  })
     }
   }
 };
@@ -58,7 +59,7 @@ export default {
 	.card-modal{
 		[title]{
 			font-size: 20px;
-	    font-weight: 500;
+	    	font-weight: 500;
 		}
 	}
 	content{
