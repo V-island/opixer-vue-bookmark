@@ -17,6 +17,7 @@ Vue.use(Router)
 Vue.component('icon', Icon)
 
 export default new Router({
+	linkActiveClass: 'active',
   routes: [
     {
       path: '/',

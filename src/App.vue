@@ -17,25 +17,50 @@
       </book-toolbar>
     </book-header>
     <!-- /.book-header -->
+
     <router-view></router-view>
+
   </div>
 </template>
 
 <script>
 //User-defined components
-import bookHeader from '@/components/book-header'
-import bookToolbar from '@/components/book-toolbar'
-import bookIconButton from '@/components/book-icon-button'
-import bookTab from '@/components/book-tab'
+import header from '@/components/book-header'
+import toolbar from '@/components/book-toolbar'
+import iconButton from '@/components/book-icon-button'
+import tab from '@/components/book-tab'
+
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'app',
   components: {
-    'book-header': bookHeader,
-    'book-toolbar': bookToolbar,
-    'book-icon-button': bookIconButton,
-    'book-tab': bookTab
+    'book-header': header,
+    'book-toolbar': toolbar,
+    'book-icon-button': iconButton,
+    'book-tab': tab
   },
+  data () {
+    return {
+
+    }
+  },
+  watch: {
+      // 如果路由有变化，会再次执行该方法
+      '$route': 'hideMenuSlide'
+  },
+  methods: {
+      ...mapActions({ setNavState: 'setNavState' }),
+      // 隐藏MenuSlide
+      hideMenuSlide() {
+        this.setNavState(false)
+      }
+  },
+  computed: {
+      ...mapGetters([
+          'loading'
+      ])
+  }
 }
 </script>
 
