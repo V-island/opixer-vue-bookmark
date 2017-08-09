@@ -1,7 +1,7 @@
 import axios from 'axios'
 import qs from 'qs'
 
-import * as _ from '../util/tool'
+// import * as _ from '../util/tool'
 
 // axios 配置
 axios.defaults.timeout = 5000;
@@ -15,7 +15,7 @@ axios.interceptors.request.use((config) => {
     }
     return config;
 },(error) =>{
-     _.toast("错误的传参", 'fail');
+     // _.toast("错误的传参", 'fail');
     return Promise.reject(error);
 });
 
@@ -27,7 +27,7 @@ axios.interceptors.response.use((res) =>{
     }
     return res;
 }, (error) => {
-    _.toast("网络异常", 'fail');
+    // _.toast("网络异常", 'fail');
     return Promise.reject(error);
 });
 
