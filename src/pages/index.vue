@@ -3,7 +3,6 @@
 	<content>
 		<card-list @show="show = true">
 		</card-list>
-		{{ getItems() }}
 	</content>
 	<book-modal :show="show" animation="slide-up" :width="448" :height="350" @hide="show = false" @show="show = true">
 		<div class="card-modal">
@@ -16,7 +15,6 @@
 <script>
 import cardList from '@/components/cardList';
 import bookModal from '@/components/book-modal';
-import axios from 'axios';
 export default {
   name: 'index',
 	components: {
@@ -29,20 +27,6 @@ export default {
   	}
   },
   methods: {
-    getItems() {
-		axios({
-			url:'http://bkapi.opixer.com',
-		    method:"GET",
-		    params: {
-				service:'Index.GetList',
-				type: 'sort'
-		    },
-			}).then(function (response) {
-				console.log(response.data.data);
-		  })
-		  .catch(function (error) {
-		  })
-    }
   }
 };
 </script>
@@ -67,7 +51,7 @@ export default {
 		display: block;
 		line-height: 0;
 		position: relative;
-	}
+	} 
 	@media only screen and (min-width: 1024px) {
 		content{
 			padding: 0 12px;
