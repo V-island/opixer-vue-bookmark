@@ -1,34 +1,53 @@
 <template>
 <div class="main">
 	<content>
-		<card-list @show="show = true">
+		<card-list>
 		</card-list>
 	</content>
-	<book-modal :show="show" animation="slide-up" :width="448" :height="350" @hide="show = false" @show="show = true">
-		<div class="card-modal">
-			<div title>创建收藏集</div>
-			<input type="text" class="whsOnd zHQkBf" jsname="YPqjbf" autocomplete="off" tabindex="0" aria-label="收藏集名称" maxlength="50" autofocus="" data-initial-value="">
-		</div>
-	</book-modal>
 </div>
 </template>
 <script>
 import cardList from '@/components/cardList';
-import bookModal from '@/components/book-modal';
+
+import { mapGetters } from 'vuex'
 export default {
   name: 'index',
 	components: {
-		'card-list': cardList,
-		'book-modal': bookModal
+		'card-list': cardList
 	},
   data() {
   	return {
-  		show: false
+  		dialog: false
   	}
   },
+  beforeRouteEnter(to, from, next) {
+      next((vm) => {
+          vm.getListData(vm)
+      })
+  },
+  computed: {
+		...mapGetters({
+      list: 'getList'
+  	})
+  },
   methods: {
+  	getListData(el) {
+  	    window.scroll(0, 0)
+  	    let id = el.$route.params.id
+  	    let type = this.$route.path.split('/')[1]
+  	    let orderName, orderType, page, perpage
+  	    let params = {
+  	        id,
+  	        type,
+  	        orderName,
+  	        orderType,
+  	        page,
+  	        perpage
+  	    }
+  	    el.$store.dispatch('getList', params)
+  	}
   }
-};
+}
 </script>
 
 <style lang="less">

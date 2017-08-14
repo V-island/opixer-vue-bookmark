@@ -10,21 +10,22 @@ const actions = {
 	/**
 	 * 获取书签列表
 	 * @param  {[type]} options.commit [description]
-	 * @param  {[type]} type           [description]
+	 * @param  {[type]} palyload       [description]
 	 * @return {[type]}                [description]
 	 */
-	getList({ commit }, type) {
-		commit(types.COM_LOADING_STATUS, true)
-		if(type == 'sort') {
-		    Api.SortList(type)
+	getList({ commit }, palyload) {
+		console.log(palyload)
+		commit(types.CON_LOADING_STATUS, true)
+		if(palyload == 'sort') {
+		    Api.SortList(palyload)
 		        .then(res => {
-		            commit(types.COM_LOADING_STATUS, false)
+		            commit(types.CON_LOADING_STATUS, false)
 		            commit(types.GET_SORT_LIST, res)
 		        })
-		} else if(type == 'label') {
-		    Api.LabelList(type)
+		} else if(palyload == 'label') {
+		    Api.LabelList(palyload)
 		        .then(res => {
-		            commit(types.COM_LOADING_STATUS, false)
+		            commit(types.CON_LOADING_STATUS, false)
 		            commit(types.GET_LABEL_LIST, res)
 		        })
 		}
