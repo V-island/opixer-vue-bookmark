@@ -21,7 +21,7 @@ axios.interceptors.request.use((config) => {
 
 //返回状态判断
 axios.interceptors.response.use((res) =>{
-    if(!res.data.success){
+    if(res.data.ret !== 200){
         // _.toast(res.data.msg);
         return Promise.reject(res);
     }
@@ -40,7 +40,7 @@ export function fetch(url, params) {
                 reject(err);
             })
             .catch((error) => {
-               reject(error)
+                reject(error)
             })
     })
 }
@@ -50,7 +50,6 @@ export default {
     /**
      * 获取分类/标签目录列表
      * @desc 根据状态筛选列表数据，支持分页
-     * @params string   type
      * @params string   orderName
      * @params string   orderType
      * @params int      page
@@ -60,16 +59,32 @@ export default {
      * @return int      page        当前第几页
      * @return int      perpage     每页数量
      */
-    GetList(params) {
-        return fetch('/bookmark/?service=Index.GetList', params)
+    getSortList(params) {
+        // return console.log(params)
+        return fetch('/bookmark/?service=List.SortList', params)
     },
 
+    /**
+     * 获取分类/标签目录列表
+     * @desc 根据状态筛选列表数据，支持分页
+     * @params string   orderName
+     * @params string   orderType
+     * @params int      page
+     * @params int      perpage
+     * @return array    items       列表数据
+     * @return int      total       总数量
+     * @return int      page        当前第几页
+     * @return int      perpage     每页数量
+     */
+    getLabelList(params) {
+        // return console.log(params)
+        return fetch('/bookmark/?service=List.LabelList', params)
+    },
 
     /**
      * 获取书签列表
      * @desc 根据状态筛选列表数据，支持分页
      * @params int      id
-     * @params string   type
      * @params string   orderName
      * @params string   orderType
      * @params int      page
@@ -79,7 +94,24 @@ export default {
      * @return int      page        当前第几页
      * @return int      perpage     每页数量
      */
-    GetItemsList(params) {
-        return fetch('/bookmark/?service=Index.GetItemsList', params)
+    getSortItems(params) {
+        return fetch('/bookmark/?service=List.SortItems', params)
+    },
+
+    /**
+     * 获取书签列表
+     * @desc 根据状态筛选列表数据，支持分页
+     * @params int      id
+     * @params string   orderName
+     * @params string   orderType
+     * @params int      page
+     * @params int      perpage
+     * @return array    items       列表数据
+     * @return int      total       总数量
+     * @return int      page        当前第几页
+     * @return int      perpage     每页数量
+     */
+    getLabelItems(params) {
+        return fetch('/bookmark/?service=List.LabelItems', params)
     },
 }

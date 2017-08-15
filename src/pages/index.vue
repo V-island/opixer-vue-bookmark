@@ -34,7 +34,8 @@ export default {
   	getListData(el) {
   	    window.scroll(0, 0)
   	    let id = el.$route.params.id
-  	    let type = this.$route.path.split('/')[1]
+  	    // let type = this.$route.path.split('/')[1]
+  	    let type = 'sort'
   	    let orderName, orderType, page, perpage
   	    let params = {
   	        id,
