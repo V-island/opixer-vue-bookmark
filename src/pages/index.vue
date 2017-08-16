@@ -1,19 +1,20 @@
 <template>
 <div class="main">
 	<content>
-		<card-list>
-		</card-list>
+		<div class="card-list">
+			<card v-for="item in list.items" :card="item"></card>
+		</div>
 	</content>
 </div>
 </template>
 <script>
-import cardList from '@/components/cardList';
+import card from '@/components/card';
 
 import { mapGetters } from 'vuex'
 export default {
   name: 'index',
 	components: {
-		'card-list': cardList
+		'card': card
 	},
   data() {
   	return {
@@ -60,18 +61,16 @@ export default {
     height: auto;
     backface-visibility: hidden;
 	}
-	.card-modal{
-		[title]{
-			font-size: 20px;
-	    	font-weight: 500;
-		}
-	}
 	content{
 		// text-align: center;
 		display: block;
 		line-height: 0;
 		position: relative;
-	} 
+	}
+	.card-list{
+		width: auto;
+		margin: -12px;
+	}
 	@media only screen and (min-width: 1024px) {
 		content{
 			padding: 0 12px;
@@ -97,8 +96,5 @@ export default {
       margin: 0 auto;
       padding: 0;
 		}
-	}
-	.card-modal{
-		
 	}
 </style>
